@@ -1,0 +1,108 @@
+#include "ui/menudef.h"
+
+// Defines //
+
+#define WINDOW_X		16
+#define WINDOW_Y		16
+#define WINDOW_WIDTH	302
+#define WINDOW_HEIGHT	344
+#define GROUP_NAME		"grpTjmod_Settings"
+
+// Window height = last_item_y + 12 + 24 (bottom button height) + 6, aka 42
+// Window width = SUBWINDOW_WIDTH + (padding*2)
+// Paddding = 6 = general X position of subwindows
+
+// Macros //
+
+#include "ui/menumacros.h"
+		
+// tjmod settings Menu //
+	
+menuDef {
+	name		"tjmod_settings"
+	visible		0
+	fullscreen	0
+	rect		WINDOW_X WINDOW_Y WINDOW_WIDTH WINDOW_HEIGHT
+	style		WINDOW_STYLE_FILLED
+	
+	onESC {
+		close tjmod_settings ; open tjmod ;
+	}
+	
+	// Ingame attentionwhoring ftw! :p
+	itemDef {
+		name		"tjmod_logo"
+		rect		545 0 64 64	// X Y W H
+		style		WINDOW_STYLE_SHADER
+		background	"ui/assets/tjmod_logo_ingame"
+		forecolor	1 1 1 0.25
+		visible		1
+		decoration
+	}
+	
+	itemDef {
+		name		"tjmod_authors"
+		rect		527 57 100 100	// X Y W H
+		style		WINDOW_STYLE_SHADER
+		background	"ui/assets/tjmod_authors_ingame"
+		forecolor	1 1 1 0.25
+		visible		1
+		decoration
+	}
+// Window //
+
+	WINDOW( "SETTINGS", 90 )
+	
+// Buttons //
+// Subwindows //
+
+#define SUBWINDOW_WIDTH		290
+
+// EDITFIELDLEFT = X Y W H TEXT SCALE TEXTY CVAR MAXCHAR MAXPAINTCHARS TOOPTIP
+// NUMERICFIELD = X Y W H TEXT SCALE TEXTY CVAR MAXCHARS TOOLTIP
+// BIND = X Y W H TEXT SCALE TEXTY CVAR TOOLTIP
+// YESNO = X Y W H TEXT SCALE TEXTY CVAR TOOLTIP
+// Subwindow height = ITEM_COUNT + (ITEM_HEIGHT*1.5), e.g. 3*12 + 12 + 6 for 3 items, then offset 6(+12) for next subwindow
+// Subwindow -> items spacing = 6 + 12 = 18
+
+// Move //
+
+	SUBWINDOW( 6, 32, (SUBWINDOW_WIDTH), 78, "General Settings" )
+	YESNO( 8, 50, (SUBWINDOW_WIDTH)-5, 10, "Pmove_Fixed:", .2, 8, "pmove_fixed", "Pmove_fixed makes you jump slightly higher/further" )
+	MULTI( 8, 62, (SUBWINDOW_WIDTH)-5, 10, "Max FPS:", .2, 8, "com_maxfps", cvarFloatList { "125" 125 "76" 76 "43" 43 },  "43, 76, or 125, frames per second (com_maxfps)" )
+	YESNO( 8, 74, (SUBWINDOW_WIDTH)-5, 10, "Nofatigue:", .2, 8, "tj_nofatigue", "Permanent nofatigue (tj_nofatigue)" )
+	YESNO( 8, 86, (SUBWINDOW_WIDTH)-5, 10, "Hide:", .2, 8, "tj_hide", "Hides other players when inside designated hide distance" )
+	MULTI( 8, 98, (SUBWINDOW_WIDTH)-5, 10, "Hide Distance:", .2, 8, "tj_hidedist", cvarFloatList { "Very close" 64 "Close" 128 "Normal" 256 "Far" 512 "Very Far" 1024 },  "Distance (in units) which to hide other players. Can be set to anything" )
+	
+	SUBWINDOW( 6, 116, (SUBWINDOW_WIDTH), 90, "Mouse Settings" )
+	SLIDER( 8, 134, (SUBWINDOW_WIDTH)-80, 10, "Sensitivity:", .2, 8, "sensitivity" 5 0 10, "Use the slider to increase or decrease mouse sensitivity" )
+	NUMERICFIELDLEFTEXT( SUBWINDOW_WIDTH-60, 134, 60, 10, "", .2, 8, "sensitivity", 7, "", "Current Mouse Sensitivity" )
+		
+	SLIDER( 8, 146, (SUBWINDOW_WIDTH)-80, 10, "Mouse Accel:", .2, 8, "cl_mouseaccel" 50 0 1, "Use the slider to increase or decrease mouse acceleration" )
+	NUMERICFIELDLEFTEXT( SUBWINDOW_WIDTH-60, 146, 60, 10, "", .2, 8, "cl_mouseaccel", 7, "", "Current Mouse Acceleration" )
+	
+	SLIDER( 8, 158, (SUBWINDOW_WIDTH)-80, 10, "Mouse Pitch:", .2, 8, "m_pitch" 50 0 1, "Use the slider to increase or decrease mouse pitch" )
+	NUMERICFIELDLEFTEXT( SUBWINDOW_WIDTH-60, 158, 60, 10, "", .2, 8, "m_pitch", 7, "", "Current Mouse Pitch" )		
+		
+	SLIDER( 8, 170, (SUBWINDOW_WIDTH)-80, 10, "Mouse Yaw:", .2, 8, "m_yaw" 50 0 1, "Use the slider to increase or decrease mouse yaw" )
+	NUMERICFIELDLEFTEXT( SUBWINDOW_WIDTH-60, 170, 60, 10, "", .2, 8, "m_yaw", 7, "", "Current Mouse Yaw" )		
+		
+	SLIDER( 8, 182, (SUBWINDOW_WIDTH)-80, 10, "Mouse Forward:", .2, 8, "m_forward" 50 0 1, "change up / down sensitivity for +strafe (m_forward)" )
+	NUMERICFIELDLEFTEXT( SUBWINDOW_WIDTH-60, 182, 60, 10, "", .2, 8, "m_forward", 7, "", "Current Mouse Forward" )		
+				
+	SLIDER( 8, 194, (SUBWINDOW_WIDTH)-80, 10, "Mouse Side:", .2, 8, "m_side" 50 0 1, "change left / right sensitivity for +strafe (m_side)" )
+	NUMERICFIELDLEFTEXT( SUBWINDOW_WIDTH-60, 194, 60, 10, "", .2, 8, "m_side", 7, "", "Current Mouse Side" )		
+
+	
+	SUBWINDOW( 6, 212, (SUBWINDOW_WIDTH), 102, "Trickjump Controls" )
+	BIND( 8, 230, (SUBWINDOW_WIDTH)-5, 10, "Save:", .2, 8, save, "Saves your position (save, save 1, save 2..)" )
+	BIND( 8, 242, (SUBWINDOW_WIDTH)-5, 10, "Load:", .2, 8, load, "Loads your position (load, load 1, load 2..)" )
+	BIND( 8, 254, (SUBWINDOW_WIDTH)-5, 10, "Reset Speed:", .2, 8, resetspeed, "Removes your speed (resetspeed)" )
+	BIND( 8, 266, (SUBWINDOW_WIDTH)-5, 10, "Strafe:", .2, 8, "+strafe", "For VOB (+strafe)" )
+	BIND( 8, 278, (SUBWINDOW_WIDTH)-5, 10, "NoGoto:", .2, 8, "nogoto", "Shortcut for toggling goto" )
+	BIND( 8, 290, (SUBWINDOW_WIDTH)-5, 10, "NoIwant:", .2, 8, "noiwant", "Shortcut for toggling iwant / call" )
+	BIND( 8, 302, (SUBWINDOW_WIDTH)-5, 10, "GoBack:", .2, 8, "goback", "Shortcut for going back to previous position after iwant/goto" )
+	
+	// Back button, all stuff is saved dynamically
+	BUTTON( 6, WINDOW_HEIGHT-24, (WINDOW_WIDTH-12), 18, "BACK", .3, 14,	close tjmod_settings ; open tjmod )
+}

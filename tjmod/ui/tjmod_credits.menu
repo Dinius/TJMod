@@ -1,0 +1,92 @@
+#include "ui/menudef.h"
+
+// Defines //
+
+#define WINDOW_X		16
+#define WINDOW_Y		16
+#define WINDOW_WIDTH	300
+#define WINDOW_HEIGHT	400
+#define GROUP_NAME		"grpTjmod_Credits"
+
+// Macros //
+
+#include "ui/menumacros.h"
+		
+// tjmod Credits Menu //
+	
+menuDef {
+	name		"tjmod_credits"
+	visible		0
+	fullscreen	0
+	rect		WINDOW_X WINDOW_Y WINDOW_WIDTH WINDOW_HEIGHT
+	style		WINDOW_STYLE_FILLED
+	
+	onESC {
+		close tjmod_credits ; open tjmod ;
+	}
+	
+	// Ingame attentionwhoring ftw! :p
+	itemDef {
+		name		"tjmod_logo"
+		rect		545 0 64 64	// X Y W H
+		style		WINDOW_STYLE_SHADER
+		background	"ui/assets/tjmod_logo_ingame"
+		forecolor	1 1 1 0.25
+		visible		1
+		decoration
+	}
+	
+	itemDef {
+		name		"tjmod_authors"
+		rect		527 57 100 100	// X Y W H
+		style		WINDOW_STYLE_SHADER
+		background	"ui/assets/tjmod_authors_ingame"
+		forecolor	1 1 1 0.25
+		visible		1
+		decoration
+	}
+// Window //
+
+	WINDOW( "TJMod", 94 )
+	
+// Buttons //
+
+// Credits Sections //
+
+
+	itemDef {
+		name		"tjmod_logo"
+		rect		104 32 92 92	// X Y W H
+		style		WINDOW_STYLE_SHADER
+		background	"ui/assets/tjmod_logo_ingame"
+		forecolor	1 1 1 0.25
+		visible		1
+		decoration
+	}
+
+
+// LABELWHITE = X Y W H TEXT SCALE ALIGN ALIGNX ALIGNY
+// E.G. X Y W 10 "test", .2, ITEM_ALIGN_RIGHT, 100, 8
+
+	LABELWHITE( 0, 136, WINDOW_WIDTH, 10, "Created by", .24, ITEM_ALIGN_CENTER, 150, 8 )
+
+	LABELWHITE( 0, 152, WINDOW_WIDTH, 10, "^dD^7inius", .22, ITEM_ALIGN_CENTER, 150, 8 )
+	LABELWHITE( 0, 170, WINDOW_WIDTH, 10, "^zeT^>|^7setup^>.", .22, ITEM_ALIGN_CENTER, 150, 8 )
+	LABELWHITE( 0, 188, WINDOW_WIDTH, 10, "^f_^7zero^? >:3", .22, ITEM_ALIGN_CENTER, 150, 8 )
+	
+	LABELWHITE( 0, 220, WINDOW_WIDTH, 10, "Thanks to", .22, ITEM_ALIGN_CENTER, 150, 8 )
+	LABELWHITE( 12, 236, WINDOW_WIDTH-24, 10, "^zETPub - ^9Diverse code!", .16, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 252, WINDOW_WIDTH-24, 10, "^zDzikie Weze - ^9Base code & princip of 2nd cgaz", .16, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 268, WINDOW_WIDTH-24, 10, "^zpupup0x - ^9General ideas & overall optimism", .16, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 280, WINDOW_WIDTH-24, 10, "^zPale - ^9Bug finding, ideas, etcetcetc", .16, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 292, WINDOW_WIDTH-24, 10, "^zSpray - ^9Help with physics testing in early stage", .16, ITEM_ALIGN_LEFT, 0, 8 )
+	
+	LABELWHITE( 0, 352, WINDOW_WIDTH, 10, "Official Home of TJMod", .18, ITEM_ALIGN_CENTER, 150, 8 )
+	LABELWHITE( 0, 362, WINDOW_WIDTH, 10, "^zwww.^7Trickjump^z.me", .22, ITEM_ALIGN_CENTER, 150, 8 )
+
+
+// Copyright Notice //
+
+	// Back button
+	BUTTON( 6, WINDOW_HEIGHT-24, (WINDOW_WIDTH-12), 18, "BACK", .3, 14,	close tjmod_credits ; open tjmod )
+}

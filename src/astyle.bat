@@ -1,0 +1,1 @@
+astyle.exe --style=allman --indent=force-tab --indent-switches --indent-col1-comments --align-pointer=name --pad-header --pad-oper --lineend=windows --unpad-paren --indent-classes --brackets=break --recursive ./*.c ./*.h > astyle.log

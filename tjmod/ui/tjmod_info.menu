@@ -1,0 +1,54 @@
+#include "ui/menudef.h"
+
+// Defines //
+
+#define WINDOW_X		16
+#define WINDOW_Y		16
+#define WINDOW_WIDTH	606
+#define WINDOW_HEIGHT	400
+#define GROUP_NAME		"grpTjmod_Info"
+
+// Macros //
+
+#include "ui/menumacros.h"
+		
+// tjmod Menu //
+	
+menuDef {
+	name		"tjmod_info"
+	visible		0
+	fullscreen	0
+	rect		WINDOW_X WINDOW_Y WINDOW_WIDTH WINDOW_HEIGHT
+	style		WINDOW_STYLE_FILLED
+	
+	onESC {
+		close tjmod_info ; open tjmod ;
+	}
+
+// Window //
+
+	WINDOW( "TJMod Info & Help", 94 )
+	
+// ZTH0oF! //
+
+	LABELWHITE( 12, 35, WINDOW_WIDTH-24, 10, "^zTo list all commands and settings, open the console, type /tj and press tab!", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 50, WINDOW_WIDTH-24, 10, "^zFor better and more detailed info, go to ^7www.Trickjump.me!", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	
+	LABELWHITE( 12, 75, WINDOW_WIDTH-24, 10, "Save:^z Saves your position. Do /save 1, save 2, etc to use extra save slots", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 90, WINDOW_WIDTH-24, 10, "Load:^z Saves your position. Do /load 1, load 2, etc to load extra slots", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 105, WINDOW_WIDTH-24, 10, "TJ_Nofatigue:^z Enables or disables permanent nofatigue (stamina)", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 120, WINDOW_WIDTH-24, 10, "CGAZ:^z The CGaz hud shows the optimal mouse angle.\n^zNote: The 'Type 1' CGaz mainly works for forwards fullbeat.", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	
+	LABELWHITE( 12, 150, WINDOW_WIDTH-24, 10, "TJH_Enable:^z Enables or disables a custom hud made for trickjump, enabled by default.", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 165, WINDOW_WIDTH-24, 10, "Resetspeed:^z /resetspeed removes all your current speed.", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	
+	LABELWHITE( 12, 195, WINDOW_WIDTH-24, 10, "Pmove_Fixed:^z When set to 1 this makes you jump slightly higher, use it!", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 210, WINDOW_WIDTH-24, 10, "Com_MaxFPS:^z Should be 43, 76 or 125.", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	LABELWHITE( 12, 225, WINDOW_WIDTH-24, 10, "^7Goto:^z Goes to another client. ^7Iwant:^z makes another client goto you.\n^zWill only work when players are standing still!", .2, ITEM_ALIGN_LEFT, 0, 8 )
+	
+	
+	LABELWHITE( 12, 280, WINDOW_WIDTH-24, 10, "For any ideas, suggestions, bugs, or anything, PLEASE post them at the www.Trickjump.me forum!! You can tell us things in-game, nothing wrong with that, but we will most likely forget it!\nSo again, post it at the forum! You can both post it and tell us, but you should post it in either case!", .22, ITEM_ALIGN_LEFT, 0, 8 )
+	
+	// Back button
+	BUTTON( 6, WINDOW_HEIGHT-24, (WINDOW_WIDTH-12), 18, "BACK", .3, 14,	close tjmod_info ; open tjmod )
+}
